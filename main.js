@@ -4,19 +4,21 @@ const btns = document.querySelector('.items');
 let result;
 
 
-console.log(btn1.value);
 
-btns.addEventListener('click', returnValues);
-
-function returnValues(e) {
+btns.addEventListener('click', function returnValues(e) {
         const {target} = e;
         const {value} = target;
 
-        if(!btns)
+        if(!target.matches('button')){
+            return;
+        } else {
+
+        }
+
         // btns.forEach((item, index )=> {
         // console.log(Number(item.value));
         //     // return screen.innerText = Number(item[index-1].value);
         // });    
      
-}
-// returnValues();
+});
+
