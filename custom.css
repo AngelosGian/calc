@@ -1,3 +1,7 @@
+html {
+	background: black;
+}
+
 .container {
 	width: 50%;
 	margin: 0 auto;
@@ -13,6 +17,7 @@
 
 .item-1 p {
 	height: 100px;
+	color: white;
 }
 
 .btn {
