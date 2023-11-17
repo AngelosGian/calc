@@ -1,64 +1,24 @@
-let currentInput = '';
-let operator = '';
-let firstOperand = '';
-let result ='';
-const screen = document.querySelector('#screen');
-let buttons = document.querySelectorAll('.item-container button');
-console.log(buttons);
+// I want C to clear the screen when I click the button 'C'
+// Ι want to calculate the addition, subtraction, multiplication and division of n numbers
+// I want to show the result of the calculation
 
-// btn7.addEventListener('click', () => {console.log(btn7.value)});
+// How to target the buttons:
+let display = document.querySelector('#screen');
+const keys = document.querySelectorAll('.btn');
 
+keys.forEach( key => key.addEventListener('click', (event) => {
+    const {target} = event;
+    const btn = target.value;
+    console.log(btn);
 
+    clearScreen(btn);
+    if(!isNaN(btn)) {
+        display.value = Number(btn);
+    }
+}))
 
-function appendInput(number) {
-    currentInput += number;
-    screen.value = currentInput;
-}
-
-function appendOperator(oper) {
-    if(currentInput !== '') {
-        firstOperand = currentInput;
-        currentInput = '';
-        operator = oper;
+function clearScreen(clearBtn) {
+    if(clearBtn === 'C') {
+        display.value = 0;
     }
 }
-
-// Calculating the result
-function calcResult() {
-    if(currentInput!== '' && operator!== '') {
-        const secondOperand = currentInput;
-        result = eval(`${firstOperand}  ${operator} ${secondOperand}`);
-        currentInput = result;
-        screen.value = result;
-        operator = '';
-    }
-}
-
-// Clearing the screen
-function clearScreen() {
-    currentInput = '';
-    operator = '';
-    firstOperand = '';
-    result = '';
-    screen.value = '';
-}
-
-buttons.forEach( (button) => {
-    button.addEventListener('click', () => {
-        console.log(button.value);
-        const value = button.textContent;
-        if(!isNaN(value)){
-
-           appendInput(value);
-        }
-        else if(value === '+' || value === '-' || value === '*' || value === '/') {
-                    console.log(value)
-            appendOperator(value);
-        } else if(value === '=') {
-                    console.log(value)
-            calcResult();
-        } else if(value === 'C') {
-            clearScreen();
-        }
-    })
-})
